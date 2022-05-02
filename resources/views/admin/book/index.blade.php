@@ -28,22 +28,24 @@
                         <th>No.</th>
                         <th>Cover</th>
                         <th>Title</th>
-                        <th>Country</th>
+                        <th>Type</th>
                         <th>Genre</th>
+                        <th>Country</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($books as $book)
+                    @foreach ($book_details as $book_detail)
                     <tr>
                         <td style="width: 30px; text-align: center">{{ $loop->iteration }}</td>
-                        <td>{{ $book->cover }}</td>
-                        <td>{{ $book->title }}</td>
-                        <td>3</td>
-                        <td>3</td>
+                        <td>{{ $book_detail->book->cover }}</td>
+                        <td>{{ $book_detail->book->title }}</td>
+                        <td>{{ $book_detail->type }}</td>
+                        <td>{{ $book_detail->genre }}</td>
+                        <td>{{ $book_detail->country }}</td>
                         <td>
-                            <a href="/book/{{ $book->id}}" class="btn btn-warning btn-sm"><i class="bi bi-info-lg"></i></a>
-                            <form action="{{ route('book.destroy',['book'=>$book->id]) }}" method="POST" class="d-inline">
+                            <a href="/book/{{ $book_detail->book_id}}" class="btn btn-warning btn-sm"><i class="bi bi-info-lg"></i></a>
+                            <form action="{{ route('book.destroy',['book'=>$book_detail->book_id]) }}" method="POST" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>

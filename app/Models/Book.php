@@ -15,6 +15,6 @@ class Book extends Model
     protected $fillable = ['title', 'cover'];
 
     public function book_detail() {
-        return $this->hasOne('App\BookDetail', 'book_id', 'id');
+        return $this->hasOne(BookDetail::class, 'book_id', 'id');
     }
 }
