@@ -50,7 +50,13 @@ class BookController extends Controller
 
         $book = new Book;
         $book->title = $request->title;
-        $book->cover = $request->cover;
+        $cover = $request->file('cover');
+        if(!empty($cover)){
+            $cover_name = date('Y-m-d')."_".$request->title;
+            $cover->move("assets/cover",$cover_name);
+            $book->cover = $cover_name;
+        }
+
         $book->save();
 
         $book_detail = new BookDetail;
@@ -62,7 +68,7 @@ class BookController extends Controller
         $book_detail->description = $request->description;
         
         Session::flash('add', $book_detail->save());
-        return redirect('/book')->with('status', 'Data Story has been added!');
+        return redirect('/book')->with('status', 'A Book Story has been added!');
     }
 
     /**

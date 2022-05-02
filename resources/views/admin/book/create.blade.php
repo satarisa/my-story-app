@@ -9,7 +9,7 @@
 
 <div class="card">
     <div class="card-body">
-        <form method="post" action="{{ route('book.store') }}">
+        <form method="post" action="{{ route('book.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-6">
@@ -23,7 +23,7 @@
                     <div class="row mb-3">
                         <label for="cover" class="col-sm-3 col-form-label">Cover</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control @error('cover') is-invalid @enderror" id="cover" name="cover" value="{{ old('cover') }}">
+                            <input type="file" accept="img/png, image/jpeg" class="form-control @error('cover') is-invalid @enderror" id="cover" name="cover" value="{{ old('cover') }}">
                             @error('cover')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                     </div>

@@ -38,7 +38,7 @@
                     @foreach ($book_details as $book_detail)
                     <tr>
                         <td style="width: 30px; text-align: center">{{ $loop->iteration }}</td>
-                        <td>{{ $book_detail->book->cover }}</td>
+                        <td><img src="{{ asset('assets/cover/'.$book_detail->book->cover) }}" width="140px" class="img-thumbnail"></td>
                         <td>{{ $book_detail->book->title }}</td>
                         <td>{{ $book_detail->type }}</td>
                         <td>{{ $book_detail->genre }}</td>
