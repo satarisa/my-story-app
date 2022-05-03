@@ -48,7 +48,7 @@
                             <form action="{{ route('book.destroy',['book'=>$book_detail->book_id]) }}" method="POST" class="d-inline">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                             </form>
                         </td>
                     </tr>

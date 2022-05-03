@@ -17,7 +17,7 @@ class CreateBookDetailsTable extends Migration
         Schema::create('book_details', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('book_id', 0, 1);
-            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('book_id')->references('id')->on('books')->onDelete('cascade');
             $table->string('type');
             $table->string('genre')->nullable();
             $table->string('country')->nullable();

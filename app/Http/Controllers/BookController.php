@@ -79,7 +79,8 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        $book_detail = BookDetail::where('book_id', $book->id)->first();
+        return view('admin.book.show', compact('book_detail'));
     }
 
     /**
@@ -90,7 +91,8 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        $book_detail = BookDetail::where('book_id', $book->id)->first();
+        return view('admin.book.edit', compact('book_detail'));
     }
 
     /**
@@ -100,9 +102,34 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => ['required'],
+            'cover' => ['image'],
+            'type' => ['required'],
+            'link' => ['url', 'nullable']
+        ], [
+            'required' => "This field can't be empty!",
+            'url' => "URL not valid!",
+            'image' => "File type must be an image! (jpg, jpeg, png, bmp, gif, svg, or webp)"
+        ]);
+
+        $book = Book::find($id);
+        $book_detail = BookDetail::find($book->id);
+
+        $book->title = $request->title;
+        if ($request->cover != null) {
+            $book->cover = $request->cover;
+        }
+        $book_detail->type = $request->type;
+        $book_detail->genre = $request->genre;
+        $book_detail->country = $request->country;
+        $book_detail->link = $request->link;
+        $book_detail->description = $request->description;
+
+        Session::flash('edit', [$book->save(), $book_detail->save()]);
+        return redirect()->route('book.show', $id)->with('status', 'Data has been successfully changed!');
     }
 
     /**
@@ -111,8 +138,9 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy($id)
     {
-        //
+        Book::find($id)->delete();
+        return redirect()->route('book.index')->with('status','Story has been deleted!');
     }
 }

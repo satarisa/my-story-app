@@ -80,4 +80,17 @@
     </script>
 </body>
 
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <img src="{{ asset('/img/msa-logo.png') }}" alt="footer-logo" height="30" style="opacity: 75%">
+      <span class="text-muted">&copy; 2021</span>
+    </div>
+
+    <div>
+        <a href="https://github.com/satarisa" class="text-muted pe-3">
+            <i class="bi bi-github" style="font-size: 1.5rem"></i>
+        </a>
+    </div>
+</footer>
+
 </html>
