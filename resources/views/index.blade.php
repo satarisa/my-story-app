@@ -15,7 +15,7 @@
                             data-bs-toggle="tooltip" data-bs-placement="bottom" title="Heaven Offiicial's Blessing">
                         <div class="card-body">
                             <p class="card-title">Author</p>
-                            <a href="#" class="badge rounded-pill bg-dark">Detail</a>
+                            <a href="#" class="badge rounded-pill bg-dark text-muted text-decoration-none">Detail</a>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                             data-bs-toggle="tooltip" data-bs-placement="bottom" title="Heaven Offiicial's Blessing">
                         <div class="card-body">
                             <p class="card-title">Author</p>
-                            <a href="#" class="badge rounded-pill bg-dark">Detail</a>
+                            <a href="#" class="badge rounded-pill bg-dark text-muted text-decoration-none">Detail</a>
                         </div>
                     </div>
                 </div>

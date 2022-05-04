@@ -26,7 +26,7 @@
             </div>
             <div class="d-flex ms-auto">
                 <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button"
+                    <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdownProfile" role="button"
                         data-bs-toggle="dropdown">
                         <img src="{{ asset('img/pp.jpg') }}" alt="profpict" width="30px" class="rounded-circle">
                         Jiang Cheng
