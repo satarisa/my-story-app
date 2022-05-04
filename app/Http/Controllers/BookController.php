@@ -40,7 +40,8 @@ class BookController extends Controller
     {
         $request->validate([
             'title' => ['required'],
-            'cover' => ['required'],
+            'cover' => ['required', 'image'],
+            'author' => ['required'],
             'type' => ['required'],
             'link' => ['url', 'nullable']
         ], [
@@ -56,6 +57,7 @@ class BookController extends Controller
             $cover->move("assets/cover",$cover_name);
             $book->cover = $cover_name;
         }
+        $book->author = $request->author;
 
         $book->save();
 
@@ -107,6 +109,7 @@ class BookController extends Controller
         $request->validate([
             'title' => ['required'],
             'cover' => ['image'],
+            'author' => ['required'],
             'type' => ['required'],
             'link' => ['url', 'nullable']
         ], [
@@ -122,6 +125,7 @@ class BookController extends Controller
         if ($request->cover != null) {
             $book->cover = $request->cover;
         }
+        $book->author = $request->author;
         $book_detail->type = $request->type;
         $book_detail->genre = $request->genre;
         $book_detail->country = $request->country;

@@ -55,19 +55,19 @@
 
     <hr>
 
+    @if ($latest != null)
     <div>
         <h1 class="display-5 fw-bold my-3">Latest Added</h1>
-
         <div class="card mb-3" style="">
             <div class="row g-0">
               <div class="col-md-2">
-                <img src="{{ asset('assets/cover/'.$latest->book->cover) }}" height="200px" class="img-fluid rounded-start" alt="...">
+                    <img src="{{ asset('assets/cover/'.$latest->book->cover) }}" height="200px" class="img-fluid rounded-start" alt="...">
               </div>
               <div class="col-md-9">
                 <div class="card-body">
-                  <h5 class="card-title display-6">{{ $latest->book->title }}</h5>
-                  <p class="card-text">{!! substr($latest->description, 0, 500).(strlen($latest->description) > 500 ? '...' : '') !!}</p>
-                  <p class="card-text"><small class="text-muted">Updated {{ $latest->updated_at->diffForHumans() }}</small></p>
+                    <h5 class="card-title display-6">{{ $latest->book->title }}</h5>
+                    <p class="card-text">{!! substr($latest->description, 0, 500).(strlen($latest->description) > 500 ? '...' : '') !!}</p>
+                    <p class="card-text"><small class="text-muted">Updated {{ $latest->updated_at->diffForHumans() }}</small></p>
                 </div>
               </div>
               <div class="col-md-1 text-center my-auto">
@@ -78,5 +78,7 @@
             </div>
           </div>
     </div>
+    @endif
+    
 </div>
 @endsection
