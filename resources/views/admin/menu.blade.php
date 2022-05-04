@@ -12,7 +12,7 @@
                 <div class="card-header">Books</div>
                 <div class="card-body">
                     <i class='bx bxs-book bx-tada-hover bx-pull-left bx-lg'></i>
-                    <h5 class="card-title">107</h5>
+                    <h5 class="card-title">{{ $total_book }}</h5>
                     <p class="card-text">stories stored</p>
                 </div>
             </div>
@@ -56,19 +56,24 @@
     <hr>
 
     <div>
-        <h1 class="display-5">Latest Added</h1>
+        <h1 class="display-5 fw-bold my-3">Latest Added</h1>
 
-        <div class="card mb-3" style="max-height: 200px;">
+        <div class="card mb-3" style="">
             <div class="row g-0">
-              <div class="col-md-4">
-                <img src="..." class="img-fluid rounded-start" alt="...">
+              <div class="col-md-2">
+                <img src="{{ asset('assets/cover/'.$latest->book->cover) }}" height="200px" class="img-fluid rounded-start" alt="...">
               </div>
-              <div class="col-md-8">
+              <div class="col-md-9">
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                  <h5 class="card-title display-6">{{ $latest->book->title }}</h5>
+                  <p class="card-text">{!! substr($latest->description, 0, 500).(strlen($latest->description) > 500 ? '...' : '') !!}</p>
+                  <p class="card-text"><small class="text-muted">Updated {{ $latest->updated_at->diffForHumans() }}</small></p>
                 </div>
+              </div>
+              <div class="col-md-1 text-center my-auto">
+                    <a href="/book/{{ $latest->book_id }}" class="text-muted">
+                        <i class="bi bi-chevron-right" style="font-size: 32px;"></i>
+                    </a>
               </div>
             </div>
           </div>
