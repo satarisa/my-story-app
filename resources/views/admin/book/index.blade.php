@@ -45,10 +45,10 @@
                         <td>{{ $book_detail->country }}</td>
                         <td>
                             <a href="/book/{{ $book_detail->book_id}}" class="btn btn-warning btn-sm"><i class="bi bi-info-lg"></i></a>
-                            <form action="{{ route('book.destroy',['book'=>$book_detail->book_id]) }}" method="POST" class="d-inline">
+                            <form action="{{ route('book.destroy',['book'=>$book_detail->book_id]) }}" method="POST" class="d-inline sa-form">
                                 @method('delete')
                                 @csrf
-                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
+                                <button type="submit" onclick="return false" class="btn btn-danger btn-sm sa-confirm"><i class="bi bi-trash"></i></button>
                             </form>
                         </td>
                     </tr>
@@ -58,5 +58,28 @@
         </div>
     </div>
 </div>
+
+@push('script')
+<script type="text/javascript">
+    $('.sa-confirm').on('click', function (e) {
+        e.preventDefault();
+        let id = $(this).data('id');
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "This action can't be undo!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#9323d9',
+            cancelButtonColor: '#6c757d',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('.sa-form').submit();
+            }
+        });
+    });
+ 
+</script>
+@endpush
 
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminViewController;
 use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +19,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/menuadmin', function () {
-    return view('admin.menu');
-});
+// Route::get('/menuadmin', function () {
+//     return view('admin.menu');
+// });
 
+Route::get('/menuadmin', [AdminViewController::class, 'index']);
 Route::resource('book', BookController::class);
