@@ -25,5 +25,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [UserViewController::class, 'index']);
+Route::get('/show-book/{id}', [UserViewController::class, 'show']);
+Route::post('/show-book', [UserViewController::class, 'store'])->name('book.review');
 Route::get('/menuadmin', [AdminViewController::class, 'index']);
 Route::resource('book', BookController::class);
