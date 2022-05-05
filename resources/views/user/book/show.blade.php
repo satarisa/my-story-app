@@ -54,13 +54,20 @@
                         <h4 class="fw-bold">Description</h4>
                         <p>{!! $book_detail->description !!}</p>
                     </div>
+                    <div class="mt-2">
+                        <h4 class="fw-bold">Reviews ({{ $reviews->count() }})</h4>
+                        
+                        @foreach ($reviews as $review)
+                            <p>{{ $review->user->nama }} : {{ $review->comment }}</p>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="col-lg-4">
             <div class="card shadow-sm mb-5">
-                <div class="card-header">Reviews (2)</div>
+                <div class="card-header">Your Review</div>
 
                 <div class="card-body">
                     <form action="{{ route('book.review') }}" method="POST">

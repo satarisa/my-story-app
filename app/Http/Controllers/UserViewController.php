@@ -15,7 +15,8 @@ class UserViewController extends Controller
 
     public function show($id) {
         $book_detail = BookDetail::find($id);
-        return view('user.book.show', compact('book_detail'));
+        $reviews = Review::all();
+        return view('user.book.show', compact('book_detail', 'reviews'));
     }
 
     public function store(Request $request) {
