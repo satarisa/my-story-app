@@ -28,6 +28,7 @@
                         <th>No.</th>
                         <th>Cover</th>
                         <th>Title</th>
+                        <th>Author</th>
                         <th>Type</th>
                         <th>Genre</th>
                         <th>Country</th>
@@ -40,6 +41,7 @@
                         <td style="width: 30px; text-align: center">{{ $loop->iteration }}</td>
                         <td><img src="{{ asset('assets/cover/'.$book_detail->book->cover) }}" width="140px" class="img-thumbnail"></td>
                         <td>{{ $book_detail->book->title }}</td>
+                        <td>{{ $book_detail->book->author }}</td>
                         <td>{{ $book_detail->type }}</td>
                         <td>{{ $book_detail->genre }}</td>
                         <td>{{ $book_detail->country }}</td>

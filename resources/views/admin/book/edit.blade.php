@@ -30,6 +30,13 @@
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <label for="author" class="col-sm-3 col-form-label">Author</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control @error('author') is-invalid @enderror" id="author" name="author" value="{{ $book_detail->book->author }}">
+                            @error('author')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label for="description" class="col-sm-3 col-form-label">Description</label>
                         <div class="col-sm-9">
                             <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{!! $book_detail->description !!}</textarea>

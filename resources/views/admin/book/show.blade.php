@@ -30,6 +30,10 @@
                 <div class="col-md-8">
                     <table class="table table-bordered">
                         <tr>
+                            <th>Author</th>
+                            <td>{{ $book_detail->book->author }}</td>
+                        </tr>
+                        <tr>
                             <th>Type</th>
                             <td>{{ $book_detail->type }}</td>
                         </tr>
