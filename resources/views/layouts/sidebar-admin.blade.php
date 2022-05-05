@@ -30,7 +30,7 @@
                     <i class='bx bx-world nav_icon'></i>
                     <span class="nav_name">Country</span>
                 </a>
-                <a href="#" class="nav_link">
+                <a href="/user" class="nav_link">
                     <i class='bx bx-user nav_icon'></i>
                     <span class="nav_name">Users</span>
                 </a>

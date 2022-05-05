@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminViewController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserViewController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +31,8 @@ Route::get('/show-book/{id}', [UserViewController::class, 'show']);
 Route::post('/show-book', [UserViewController::class, 'store'])->name('book.review');
 Route::get('/menuadmin', [AdminViewController::class, 'index']);
 Route::resource('book', BookController::class);
+Route::resource('user', UserController::class);
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);

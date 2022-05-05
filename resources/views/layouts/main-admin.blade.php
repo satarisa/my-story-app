@@ -77,7 +77,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script>
         $(document).ready(function() {
-            $("#dataTable").DataTable({
+            $("table#dataTable").DataTable({
                 "responsive": true,
                 "autoWidth": false,
             });
