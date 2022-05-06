@@ -1,0 +1,38 @@
+svg {
+    display: inline-block;
+    position: absolute;
+    top: 0%;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.card-pd {
+    padding-top: 50px; 
+    padding-bottom: 50px; 
+    padding-left: 100px; 
+    padding-right: 100px;
+}
+
+.btn-one {
+    background-color: #9323d9;
+    color: white;
+}
+
+button:hover {
+    background-color: #b585d4;
+}
+
+a {
+    color: #9323d9;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #9323d9;
+    font-weight: 500;
+}

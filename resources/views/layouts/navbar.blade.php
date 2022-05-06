@@ -29,12 +29,12 @@
                     <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdownProfile" role="button"
                         data-bs-toggle="dropdown">
                         <img src="{{ asset('img/pp.jpg') }}" alt="profpict" width="30px" class="rounded-circle">
-                        Jiang Cheng
+                        {{ session('user')->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><a class="dropdown-item" href="/menuadmin">Menu Admin</a></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
                     </ul>
                 </div>
             </div>

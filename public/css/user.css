@@ -25,3 +25,12 @@ div.stars {
     content: '\f006';
     font-family: FontAwesome;
   }
+
+.btn-user-1 {
+  background-color: #E3E5FD;
+  border-color: #b3b5d2;
+}
+
+.btn-user-1:hover {
+  background-color: #9ca0c7;
+}
