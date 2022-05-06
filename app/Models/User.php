@@ -18,4 +18,8 @@ class User  extends Authenticatable
     public function review() {
         return $this->hasMany(Review::class, 'user_id', 'id');
     }
+
+    public function profile() {
+        return $this->hasOne(Profile::class, 'user_id', 'id');
+    }
 }
