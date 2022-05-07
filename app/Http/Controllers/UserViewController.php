@@ -18,16 +18,32 @@ class UserViewController extends Controller
     }
 
     public function show($id) {
-        $user_id = session('user')->id;
-        $book_detail = BookDetail::find($id);
-        $reviews = Review::where('book_id', $id)->get();
-        $your_review  = Review::where('user_id', $user_id)->where('book_id', $id)->first();
-        $rate_avg = Review::where('book_id', $id)->avg('rating');
-
-        return view('user.book.show', compact('book_detail', 'reviews', 'rate_avg', 'your_review'));
+        if (!empty(session('user'))) {
+            $user_id = session('user')->id;
+            $book_detail = BookDetail::find($id);
+            $reviews = Review::where('book_id', $id)->get();
+            $your_review  = Review::where('user_id', $user_id)->where('book_id', $id)->first();
+            $rate_avg = Review::where('book_id', $id)->avg('rating');
+    
+            return view('user.book.show', compact('book_detail', 'reviews', 'rate_avg', 'your_review'));
+        } else {
+            $book_detail = BookDetail::find($id);
+            $reviews = Review::where('book_id', $id)->get();
+            $rate_avg = Review::where('book_id', $id)->avg('rating');
+    
+            return view('user.book.show', compact('book_detail', 'reviews', 'rate_avg'));
+        }
+        
     }
 
     public function store(Request $request) {
+        $request->validate([
+            'star'      => ['required'],
+            'comment'   => ['required']
+        ], [
+            'required'  => "You can't leave this field blank!"
+        ]);
+        
         $review = new Review;
         $review->user_id = $request->user_id;
         $review->book_id = $request->book_id;

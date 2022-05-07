@@ -107,72 +107,77 @@
             @endif
 
             <div class="card shadow-sm mb-5">
-                <div class="card-header">Your Review</div>
+                <div class="card-header fs-3">Your Review</div>
 
                 <div class="card-body">
-                    @if (!empty($your_review))
-                        <form action="{{ route('review.update', $your_review->id) }}" method="POST">
-                            @csrf
-                            @method('put')
+                    @if (!empty(session('user')))
+                        @if (!empty($your_review))
+                            <form action="{{ route('review.update', $your_review->id) }}" method="POST">
+                                @csrf
+                                @method('put')
 
-                            <input type="hidden" name="book_id" id="book_id" value="{{ $book_detail->book_id }}">
-                            <input type="hidden" name="user_id" id="user_id" value="{{ session('user')->id }}">
-                            
-                            <div class="stars">
-                                <div>
-                                    <input class="star star-5" id="star-5" type="radio" name="star" value="5" {{ $your_review->rating == 5 ? 'checked' : '' }} />
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star" value="4" {{ $your_review->rating == 4 ? 'checked' : '' }} />
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star" value="3" {{ $your_review->rating == 3 ? 'checked' : '' }} />
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star" value="2" {{ $your_review->rating == 2 ? 'checked' : '' }} />
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star" value="1" {{ $your_review->rating == 1 ? 'checked' : '' }} />
-                                    <label class="star star-1" for="star-1"></label>
+                                <input type="hidden" name="book_id" id="book_id" value="{{ $book_detail->book_id }}">
+                                <input type="hidden" name="user_id" id="user_id" value="{{ session('user')->id }}">
+                                
+                                <div class="stars">
+                                    <div>
+                                        <input class="star star-5" id="star-5" type="radio" name="star" value="5" {{ $your_review->rating == 5 ? 'checked' : '' }} />
+                                        <label class="star star-5" for="star-5"></label>
+                                        <input class="star star-4" id="star-4" type="radio" name="star" value="4" {{ $your_review->rating == 4 ? 'checked' : '' }} />
+                                        <label class="star star-4" for="star-4"></label>
+                                        <input class="star star-3" id="star-3" type="radio" name="star" value="3" {{ $your_review->rating == 3 ? 'checked' : '' }} />
+                                        <label class="star star-3" for="star-3"></label>
+                                        <input class="star star-2" id="star-2" type="radio" name="star" value="2" {{ $your_review->rating == 2 ? 'checked' : '' }} />
+                                        <label class="star star-2" for="star-2"></label>
+                                        <input class="star star-1" id="star-1" type="radio" name="star" value="1" {{ $your_review->rating == 1 ? 'checked' : '' }} />
+                                        <label class="star star-1" for="star-1"></label>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div>
-                                <textarea class="form-control @error('comment') is-invalid @enderror" maxlength="250" id="comment"
-                                    name="comment" placeholder="Insert your review here...">{{ $your_review->comment }}</textarea>
-                                @error('comment')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                            </div>
+                                <div>
+                                    <textarea class="form-control @error('comment') is-invalid @enderror" maxlength="250" id="comment"
+                                        name="comment" placeholder="Insert your review here...">{{ $your_review->comment }}</textarea>
+                                    @error('comment')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                </div>
 
-                            <button type="submit" class="btn btn-info btn-sm mt-2 float-end">CHANGE</button>
-                        </form>
+                                <button type="submit" class="btn btn-info btn-sm mt-2 float-end">CHANGE</button>
+                            </form>
+                        @else
+                            <form action="{{ route('book.review') }}" method="POST">
+                                @csrf
+
+                                <input type="hidden" name="book_id" id="book_id" value="{{ $book_detail->book_id }}">
+                                <input type="hidden" name="user_id" id="user_id" value="{{ session('user')->id }}">
+                                
+                                <div class="stars">
+                                    <div>
+                                        <input class="star star-5" id="star-5" type="radio" name="star" value="5" />
+                                        <label class="star star-5" for="star-5"></label>
+                                        <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
+                                        <label class="star star-4" for="star-4"></label>
+                                        <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
+                                        <label class="star star-3" for="star-3"></label>
+                                        <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
+                                        <label class="star star-2" for="star-2"></label>
+                                        <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
+                                        <label class="star star-1" for="star-1"></label>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <textarea class="form-control @error('comment') is-invalid @enderror" id="comment"
+                                        name="comment" placeholder="Insert your review here..." value="{{ old('comment') }}"></textarea>
+                                    @error('comment')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                                </div>
+
+                                <button type="submit" class="btn btn-info btn-sm mt-2 float-end">POST</button>
+                            </form>
+                            
+                        @endif
                     @else
-                        <form action="{{ route('book.review') }}" method="POST">
-                            @csrf
-
-                            <input type="hidden" name="book_id" id="book_id" value="{{ $book_detail->book_id }}">
-                            <input type="hidden" name="user_id" id="user_id" value="{{ session('user')->id }}">
-                            
-                            <div class="stars">
-                                <div>
-                                    <input class="star star-5" id="star-5" type="radio" name="star" value="5" />
-                                    <label class="star star-5" for="star-5"></label>
-                                    <input class="star star-4" id="star-4" type="radio" name="star" value="4" />
-                                    <label class="star star-4" for="star-4"></label>
-                                    <input class="star star-3" id="star-3" type="radio" name="star" value="3" />
-                                    <label class="star star-3" for="star-3"></label>
-                                    <input class="star star-2" id="star-2" type="radio" name="star" value="2" />
-                                    <label class="star star-2" for="star-2"></label>
-                                    <input class="star star-1" id="star-1" type="radio" name="star" value="1" />
-                                    <label class="star star-1" for="star-1"></label>
-                                </div>
-                            </div>
-
-                            <div>
-                                <textarea class="form-control @error('comment') is-invalid @enderror" id="comment"
-                                    name="comment" placeholder="Insert your review here..." value="{{ old('comment') }}"></textarea>
-                                @error('comment')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                            </div>
-
-                            <button type="submit" class="btn btn-info btn-sm mt-2 float-end">POST</button>
-                        </form>
-                        
+                        Please <a href="/login">Login</a> First!
                     @endif
+
 
                 </div>
             </div>
