@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminViewController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserViewController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,8 @@ Route::put('/show-book/{id}', [UserViewController::class, 'update'])->name('revi
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
 
 Route::middleware('auth')->group(function() {
     Route::middleware('admin')->group(function() {
