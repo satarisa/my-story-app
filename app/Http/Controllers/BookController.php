@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\BookDetail;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -82,7 +83,9 @@ class BookController extends Controller
     public function show(Book $book)
     {
         $book_detail = BookDetail::where('book_id', $book->id)->first();
-        return view('admin.book.show', compact('book_detail'));
+        $reviews = Review::where('book_id', $book->id)->get();
+        $rate_avg = Review::where('book_id', $book->id)->avg('rating');
+        return view('admin.book.show', compact('book_detail', 'reviews', 'rate_avg'));
     }
 
     /**
