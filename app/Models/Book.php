@@ -17,4 +17,12 @@ class Book extends Model
     public function book_detail() {
         return $this->hasOne(BookDetail::class, 'book_id', 'id');
     }
+
+    public function review() {
+        return $this->hasMany(Review::class, 'book_id', 'id');
+    }
+
+    public function book_novel() {
+        return $this->book_detail()->where('type', '=', 'Novel');
+    }
 }

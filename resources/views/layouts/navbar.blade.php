@@ -25,18 +25,22 @@
                 <a class="nav-link" href="#">About</a>
             </div>
             <div class="d-flex ms-auto">
-                <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdownProfile" role="button"
-                        data-bs-toggle="dropdown">
-                        <img src="{{ asset('img/pp.jpg') }}" alt="profpict" width="30px" class="rounded-circle">
-                        {{ session('user')->name }}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="/menuadmin">Menu Admin</a></li>
-                        <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                    </ul>
-                </div>
+                @if ( !empty(session('user')))
+                    <div class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdownProfile" role="button"
+                            data-bs-toggle="dropdown">
+                            <img src="{{ asset('img/pp.jpg') }}" alt="profpict" width="30px" class="rounded-circle">
+                            {{ session('user')->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="/menuadmin">Menu Admin</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                @else
+                    <a href="/login" class="nav-link text-muted">Login</a>
+                @endif
             </div>
         </div>
     </div>
