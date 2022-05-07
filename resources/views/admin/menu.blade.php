@@ -23,8 +23,8 @@
                 <div class="card-header">Users</div>
                 <div class="card-body">
                     <i class='bx bxs-group bx-tada-hover bx-pull-left bx-lg'></i>
-                    <h5 class="card-title">117</h5>
-                    <p class="card-text">users join</p>
+                    <h5 class="card-title">{{ $total_user }}</h5>
+                    <p class="card-text">users joined</p>
                 </div>
             </div>
         </div>
@@ -34,8 +34,8 @@
                 <div class="card-header">Reviews</div>
                 <div class="card-body">
                     <i class='bx bxs-message-dots bx-tada-hover bx-pull-left bx-lg'></i>
-                    <h5 class="card-title">97</h5>
-                    <p class="card-text">users review</p>
+                    <h5 class="card-title">{{ $total_review }}</h5>
+                    <p class="card-text">reviews given</p>
                 </div>
             </div>
         </div>

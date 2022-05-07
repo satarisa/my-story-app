@@ -34,7 +34,9 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
                             <li><a class="dropdown-item" href="#">Profile</a></li>
+                            @if (session('user')->role == 'admin')
                             <li><a class="dropdown-item" href="/menuadmin">Menu Admin</a></li>
+                            @endif
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         </ul>
                     </div>
