@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\BookDetail;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -10,8 +11,10 @@ use Illuminate\Support\Facades\Session;
 class UserViewController extends Controller
 {
     public function index() {
-        $book = BookDetail::all();
-        return view('index', compact('book'));
+        // $book = BookDetail::all();
+        $novels = Book::whereRelation('book_detail', 'type', 'Novel')->withCount('review')->orderBy('review_count', 'desc')->take(5)->get();
+        $webcomics = Book::whereRelation('book_detail', 'type', 'Webcomic')->withCount('review')->orderBy('review_count', 'desc')->take(5)->get();
+        return view('index', compact('novels', 'webcomics'));
     }
 
     public function show($id) {
@@ -19,8 +22,9 @@ class UserViewController extends Controller
         $book_detail = BookDetail::find($id);
         $reviews = Review::where('book_id', $id)->get();
         $your_review  = Review::where('user_id', $user_id)->where('book_id', $id)->first();
+        $rate_avg = Review::where('book_id', $id)->avg('rating');
 
-        return view('user.book.show', compact('book_detail', 'reviews', 'your_review'));
+        return view('user.book.show', compact('book_detail', 'reviews', 'rate_avg', 'your_review'));
     }
 
     public function store(Request $request) {

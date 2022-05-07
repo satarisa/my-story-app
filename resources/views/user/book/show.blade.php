@@ -36,6 +36,20 @@
                                     <th>Genre</th>
                                     <td>{{ $book_detail->genre }}</td>
                                 </tr>
+                                <tr>
+                                    <th>Ratings</th>
+                                    <td>
+                                        ({{ number_format($rate_avg,1) }})
+                                        @while($rate_avg>0)
+                                            @if($rate_avg >0.5)
+                                                <i class="bi bi-star-fill" style="color: yellow; border; text-shadow: 0 0 3px #000;"></i>
+                                            @else
+                                                <i class="bi bi-star-half" style="color: yellow; border; text-shadow: 0 0 3px #000;"></i>
+                                            @endif
+                                            @php $rate_avg--; @endphp
+                                        @endwhile
+                                    </td>
+                                </tr>
                             </table>
 
                             <a href="{{ $book_detail->link }}" target="_blank" class="btn btn-user-1"><i class="bi bi-book-half"></i> Read Now</a>
@@ -43,7 +57,11 @@
                     </div>
                     <div class="mt-4">
                         <h4 class="fw-bold">Description</h4>
-                        <p>{!! $book_detail->description !!}</p>
+                        @if ($book_detail->description != null)
+                            <p>{!! $book_detail->description !!}</p>
+                        @else
+                            <p><em>There is no description yet</em></p>
+                        @endif
                     </div>
                     <div class="mt-2">
                         <h4 class="fw-bold">Reviews ({{ $reviews->count() }})</h4>
@@ -80,7 +98,6 @@
                     <div class="toast-header">
                         <i class="bi bi-check-circle-fill me-3"></i>
                         <strong class="me-auto">Success!</strong>
-                        <small>11 mins ago</small>
                         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                     </div>
                     <div class="toast-body text-white">
@@ -117,7 +134,7 @@
                             </div>
 
                             <div>
-                                <textarea class="form-control @error('comment') is-invalid @enderror" id="comment"
+                                <textarea class="form-control @error('comment') is-invalid @enderror" maxlength="250" id="comment"
                                     name="comment" placeholder="Insert your review here...">{{ $your_review->comment }}</textarea>
                                 @error('comment')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>

@@ -201,3 +201,7 @@ a {
     background-color: var(--first-color);
     color: white;
 }
+
+.btn-two {
+    background-color: var(--first-color-light);
+}
