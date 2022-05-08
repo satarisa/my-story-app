@@ -33,7 +33,7 @@
                             {{ session('user')->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
                             @if (session('user')->role == 'admin')
                             <li><a class="dropdown-item" href="/menuadmin">Menu Admin</a></li>
                             @endif

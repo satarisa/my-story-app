@@ -14,13 +14,11 @@
                     @csrf
 
                     <div class="form-floating mb-2">
-                        <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Username"
-                        required>
+                        <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Username" required>
                         <label for="user_name">Username</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password"
-                        required>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                         <label for="password">Password</label>
                     </div>
                     <div class="d-grid gap-2 mx-auto">
