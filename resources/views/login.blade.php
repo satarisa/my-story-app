@@ -12,13 +12,16 @@
                 <hr>
                 <form action="/login" method="post">
                     @csrf
-                    <div class="mb-2">
+
+                    <div class="form-floating mb-2">
                         <input type="text" class="form-control" id="user_name" name="user_name" placeholder="Username"
                         required>
+                        <label for="user_name">Username</label>
                     </div>
-                    <div class="mb-3">
+                    <div class="form-floating mb-3">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Password"
                         required>
+                        <label for="password">Password</label>
                     </div>
                     <div class="d-grid gap-2 mx-auto">
                         <button type="submit" class="btn btn-one btn-block">LOGIN</button>
