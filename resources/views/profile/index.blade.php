@@ -15,44 +15,28 @@
                 </div>
         
                 <div class="col-lg-10">
-                    <a href="" class="btn btn-primary float-end">Edit Profile</a>
-                    <h1>Name</h1>
+                    <a href="/profile/{{ $profile->id }}/edit" class="btn btn-primary float-end">Edit Profile</a>
+                    <h1>{{ $profile->user->name }}</h1>
                     <hr>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email" value="name@example.com" readonly>
+                                <input type="email" class="form-control" id="email" value="{{ $profile->user->email }}" readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Username</label>
-                                <input type="email" class="form-control" id="email" value="name@example.com" readonly>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Gender</label>
-                                <input type="email" class="form-control" id="email" value="name@example.com" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Birthday</label>
-                                <input type="email" class="form-control" id="email" value="name@example.com" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <small class="mb-2" style="color: red">Let this field blank if there is nothing to change</small>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Password</label>
-                                <input type="email" class="form-control" id="email" value="name@example.com" readonly>
+                                <label for="user_name" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="user_name" value="{{ $profile->user->user_name }}" readonly>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="mb-3">
-                                <label for="email" class="form-label">Confirm Password</label>
-                                <input type="email" class="form-control" id="email" value="name@example.com" readonly>
+                                <label for="gender" class="form-label">Gender</label>
+                                <input type="text" class="form-control" id="gender" value="{{ $profile->gender }}" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="birthday" class="form-label">Birthday</label>
+                                <input type="date" class="form-control" id="birthday" value="{{ $profile->birthday }}" readonly>
                             </div>
                         </div>
                     </div>

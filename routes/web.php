@@ -48,6 +48,6 @@ Route::middleware('auth')->group(function() {
     });
     
     Route::middleware('userlogin')->group(function() {
+        Route::resource('profile', ProfileController::class);
     });
-    Route::resource('profile', ProfileController::class);
 });
