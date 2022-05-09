@@ -25,7 +25,7 @@
                                 <input type="email" class="form-control" id="email" value="name@example.com" readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Birthday</label>
+                                <label for="email" class="form-label">Username</label>
                                 <input type="email" class="form-control" id="email" value="name@example.com" readonly>
                             </div>
                         </div>
@@ -35,7 +35,23 @@
                                 <input type="email" class="form-control" id="email" value="name@example.com" readonly>
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email Address</label>
+                                <label for="email" class="form-label">Birthday</label>
+                                <input type="email" class="form-control" id="email" value="name@example.com" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <small class="mb-2" style="color: red">Let this field blank if there is nothing to change</small>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Password</label>
+                                <input type="email" class="form-control" id="email" value="name@example.com" readonly>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Confirm Password</label>
                                 <input type="email" class="form-control" id="email" value="name@example.com" readonly>
                             </div>
                         </div>
