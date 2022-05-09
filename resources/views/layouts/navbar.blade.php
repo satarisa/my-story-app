@@ -25,7 +25,7 @@
                 <a class="nav-link" href="#">About</a>
             </div>
             <div class="d-flex ms-auto">
-                @if ( !empty(session('user')))
+                @if (!empty(session('user')))
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdownProfile" role="button"
                             data-bs-toggle="dropdown">
@@ -33,7 +33,7 @@
                             {{ session('user')->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
-                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="/profile/{{ session('user')->id }}">Profile</a></li>
                             @if (session('user')->role == 'admin')
                             <li><a class="dropdown-item" href="/menuadmin">Menu Admin</a></li>
                             @endif

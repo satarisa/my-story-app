@@ -33,8 +33,6 @@ Route::get('/show-book/{id}', [UserViewController::class, 'show']);
 Route::post('/show-book', [UserViewController::class, 'store'])->name('book.review');
 Route::put('/show-book/{id}', [UserViewController::class, 'update'])->name('review.update');
 
-Route::resource('profile', ProfileController::class);
-
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
@@ -47,5 +45,9 @@ Route::middleware('auth')->group(function() {
         Route::get('/menuadmin', [AdminViewController::class, 'index']);
         Route::resource('book', BookController::class);
         Route::resource('user', UserController::class);
+    });
+    
+    Route::middleware('userlogin')->group(function() {
+        Route::resource('profile', ProfileController::class);
     });
 });

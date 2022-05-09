@@ -9,9 +9,10 @@ class Profile extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $table = 'profiles';
     protected $primaryKey = 'id';
-    protected $fillable = ['user_id', 'picture'];
+    protected $fillable = ['user_id', 'picture', 'gender', 'birthday'];
 
     public function user()
     {

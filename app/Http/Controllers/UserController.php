@@ -60,7 +60,7 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
 
-        Session::flash('add', $user->save());
+        Session::flash('add', [$user->save(), $user->profile()->create()]);
         return redirect('/user')->with('status', 'Admin has been added!');
     }
 

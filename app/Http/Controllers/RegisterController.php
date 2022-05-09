@@ -38,6 +38,8 @@ class RegisterController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
+        $user->profile()->create();
+
         Auth::attempt([
             'user_name' => $user->user_name,
             'password' => $user->password

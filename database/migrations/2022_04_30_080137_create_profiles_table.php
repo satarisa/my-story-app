@@ -16,9 +16,11 @@ class CreateProfilesTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('picture');
+            $table->string('picture')->nullable();
             $table->bigInteger('user_id', 0, 1);
             $table->foreign('user_id')->references('id')->on('users');
+            $table->enum('gender', ['Female', 'Male'])->nullable();
+            $table->date('birthday')->nullable();
         });
     }
 
