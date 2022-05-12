@@ -12,7 +12,7 @@ class User  extends Authenticatable
     use HasFactory;
     protected $table = 'users';
     protected $primaryKey = 'id';
-    protected $fillable = ['user_name', 'nama', 'email'];
+    protected $fillable = ['user_name', 'name', 'email'];
     protected $hidden = ['password', 'remember_token'];
 
     public function review() {

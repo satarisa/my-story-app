@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -73,21 +75,32 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_name' => ['required', 'unique:users,user_name'],
+            'user_name' => ['required', 'unique:users,user_name,'.$id], //table,column,except,id
             'name'      => ['required'],
             'email'     => ['required', 'email:rfc,dns'],
-            'password'  => ['required', 'size:6', 'confirmed'],
-            'password_confirmation' => ['required']
+            'password'  => ['nullable', 'min:6', 'confirmed'],
         ],[ 
             'required'  => "This field can't be empty!",
             'user_name.unique'  => "Username already exist!",
             'email'     => "Email address not valid!",
             'confirmed' => "Password didn't match!",
-            'size'      => "Password must be at least 6 characters!"
+            'min'      => "Password must be at least 6 characters!"
         ]);
 
-        // Session::flash('add', [$user->save(), $user->profile()->create()]);
-        // return redirect('/user')->with('status', 'Admin has been added!');
+        $user = User::find($id);
+        $user->user_name = $request->user_name;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->password != null) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $profile = Profile::find($id);
+        $profile->gender = $request->gender;
+        $profile->birthday = $request->birthday;
+
+        Session::flash('add', [$user->save(), $profile->save()]);
+        return redirect('/profile/'.$id)->with('status', 'Profile successfully updated!');
     }
 
     /**

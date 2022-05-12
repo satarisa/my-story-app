@@ -6,6 +6,17 @@
 @section('content')
 
 <div class="container">
+    @if (session('status'))
+    <div class="mt-3 mx-auto d-grid gap-2 col-4">
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <i class='bx bxs-check-circle bx-md me-2'></i>
+            <div>
+                {{ session('status') }}
+            </div>
+          </div>
+    </div>
+    @endif
+    
     <h1 class="mt-4 display-3">My Profile</h1>
     <div class="card shadow-lg mt-4">
         <div class="card-body">
