@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     @if ($profile->picture != null)
-                        <img src="{{ asset('/assets/profile_picture/'.$profile->picture) }}" alt="profile" class="rounded-circle img-thumbnail" width="155px" height="155px">
+                        <img src="{{ asset('/assets/profile_picture/'.$profile->picture) }}" alt="profile" class="rounded-circle img-thumbnail" style="width: 155px; height: 155px;">
                     @else
                         <img src="{{ asset('/img/user.png') }}" alt="profile" class="rounded-circle img-thumbnail" width="155px" height="155px">    
                     @endif

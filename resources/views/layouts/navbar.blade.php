@@ -29,7 +29,11 @@
                     <div class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdownProfile" role="button"
                             data-bs-toggle="dropdown">
-                            <img src="{{ asset('img/pp.jpg') }}" alt="profpict" width="30px" class="rounded-circle">
+                            @if (session('profile')->picture != null)
+                            <img src="{{ asset('assets/profile_picture/'.session('profile')->picture) }}" alt="profpict" width="30px" class="rounded-circle">
+                            @else
+                            <img src="{{ asset('img/user.png') }}" alt="profpict" width="30px" class="rounded-circle">
+                            @endif
                             {{ session('user')->name }}
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">

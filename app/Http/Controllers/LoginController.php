@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Login;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -49,6 +50,8 @@ class LoginController extends Controller
         if ($attempted) {
             $user = Login::where(["user_name" => $user_name])->first();
             Session::put('user', $user);
+            $profile = Profile::where(["user_id" => $user->id])->first();
+            Session::put('profile', $profile);
             return redirect('/');
         } else {
             Session::flash('gagal_login', TRUE);
