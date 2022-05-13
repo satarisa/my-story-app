@@ -30,7 +30,7 @@
                         <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdownProfile" role="button"
                             data-bs-toggle="dropdown">
                             @if (session('profile')->picture != null)
-                            <img src="{{ asset('assets/profile_picture/'.session('profile')->picture) }}" alt="profpict" width="30px" class="rounded-circle">
+                            <img src="{{ asset('assets/profile_picture/'.session('profile')->picture) }}" alt="profpict"  style="width: 30px; height: 30px;" class="rounded-circle">
                             @else
                             <img src="{{ asset('img/user.png') }}" alt="profpict" width="30px" class="rounded-circle">
                             @endif
