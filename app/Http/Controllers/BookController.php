@@ -126,7 +126,12 @@ class BookController extends Controller
 
         $book->title = $request->title;
         if ($request->cover != null) {
-            $book->cover = $request->cover;
+            $cover = $request->file('cover');
+            if(!empty($cover)){
+                $cover_name = date('Y-m-d')."_".$request->title;
+                $cover->move("assets/cover",$cover_name);
+                $book->cover = $cover_name;
+            }
         }
         $book->author = $request->author;
         $book_detail->type = $request->type;

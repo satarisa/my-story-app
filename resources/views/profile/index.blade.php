@@ -16,13 +16,17 @@
           </div>
     </div>
     @endif
-    
+
     <h1 class="mt-4 display-3">My Profile</h1>
     <div class="card shadow-lg mt-4">
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-2">
-                    <img src="{{ asset('img/pp.jpg') }}" alt="profile" class="rounded-circle img-thumbnail" width="155px" height="155px">
+                    @if ($profile->picture != null)
+                        <img src="{{ asset('/assets/profile_picture/'.$profile->picture) }}" alt="profile" class="rounded-circle img-thumbnail" style="width: 155px; height: 155px;">
+                    @else
+                        <img src="{{ asset('/img/user.png') }}" alt="profile" class="rounded-circle img-thumbnail" width="155px" height="155px">    
+                    @endif
                 </div>
         
                 <div class="col-lg-10">
