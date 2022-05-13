@@ -79,12 +79,14 @@ class ProfileController extends Controller
             'name'      => ['required'],
             'email'     => ['required', 'email:rfc,dns'],
             'password'  => ['nullable', 'min:6', 'confirmed'],
+            'picture'   => ['image']
         ],[ 
             'required'  => "This field can't be empty!",
             'user_name.unique'  => "Username already exist!",
             'email'     => "Email address not valid!",
             'confirmed' => "Password didn't match!",
-            'min'      => "Password must be at least 6 characters!"
+            'min'      => "Password must be at least 6 characters!",
+            'image' => "File type must be an image!"
         ]);
 
         $user = User::find($id);
@@ -98,6 +100,19 @@ class ProfileController extends Controller
         $profile = Profile::find($id);
         $profile->gender = $request->gender;
         $profile->birthday = $request->birthday;
+        if ($request->picture != '') {
+            $path = public_path().'/assets/profile_picture/';
+
+            if ($profile->picture != null && $profile->picture != '') {
+                $old_pict = $path.$profile->picture;
+                unlink($old_pict);
+            }
+
+            $picture = $request->picture;
+            $picture_name = 'user'.$id.'_'.$picture->getClientOriginalName();
+            $picture->move($path, $picture_name);
+            $profile->picture = $picture_name;
+        }
 
         Session::flash('add', [$user->save(), $profile->save()]);
         return redirect('/profile/'.$id)->with('status', 'Profile successfully updated!');

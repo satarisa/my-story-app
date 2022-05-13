@@ -9,16 +9,24 @@
     <h1 class="mt-4 display-5">Edit Profile</h1>
     <div class="card shadow-lg mt-4 mb-5">
         <div class="card-body">
-            <div class="row">
-                <div class="col-lg-2">
-                    <img src="{{ asset('img/pp.jpg') }}" alt="profile" class="rounded-circle img-thumbnail" width="155px" height="155px">
-                    <center><button class="btn btn-outline-dark btn-sm mt-2"><i class="bi bi-upload"></i> Upload Picture</button></center>
-                </div>
-        
-                <div class="col-lg-10">
-                    <form action="{{ route('profile.update', ['profile' => $profile->id]) }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('put')
+            <form action="{{ route('profile.update', ['profile' => $profile->id]) }}" method="post" enctype="multipart/form-data">
+                @csrf
+                @method('put')
+                <div class="row">
+                    <div class="col-lg-2">
+                        @if ($profile->picture != null)
+                            <img id="profile_pic" src="{{ asset('/assets/profile_picture/'.$profile->picture) }}" alt="profile" class="rounded-circle img-thumbnail" width="155px" height="155px">
+                        @else
+                            <img id="profile_pic" src="{{ asset('/img/user.png') }}" alt="profile" class="rounded-circle img-thumbnail" width="155px" height="155px">    
+                        @endif
+                        <center>
+                            <input type="file"  accept="img/png, image/jpeg" name="picture" id="picture" style="display: none;" onchange="preview()" class="form-control @error('picture') is-invalid @enderror">
+                            <input type="button" class="btn btn-sm btn-dark mt-2" value="Browse" onclick="document.getElementById('picture').click();" />
+                            @error('picture')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </center>
+                    </div>
+            
+                    <div class="col-lg-10">
                         <h1>
                             <input type="text" class="form-control-plaintext @error('name') is-invalid @enderror" id="name" name="name" value="{{ $profile->user->name }}">
                             @error('name')<div class="invalid-feedback fs-6">{{ $message }}</div>@enderror
@@ -73,12 +81,19 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-user-1 float-end px-4">Save</button>
-                    </form>
+                    </div>
                 </div>
-            </div>
-
+                    
+            </form>
         </div>
     </div>
 </div>
 
+@push('script')
+    <script>
+        function preview() {
+            profile_pic.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+@endpush
 @endsection

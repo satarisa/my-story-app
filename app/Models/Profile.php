@@ -12,7 +12,7 @@ class Profile extends Model
     public $timestamps = false;
     protected $table = 'profiles';
     protected $primaryKey = 'id';
-    protected $fillable = ['user_id', 'picture', 'gender', 'birthday'];
+    protected $fillable = ['user_id', 'gender', 'birthday'];
 
     public function user()
     {
