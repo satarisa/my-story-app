@@ -84,7 +84,7 @@
                                 @if (empty($review->user->profile->picture))
                                     <img src="{{ asset('/img/user.png') }}" alt="user" width="40px" height="40px" class="rounded-circle">
                                 @else
-                                <img src="{{ asset('assets/profile_picture/'.$review->user->profile->picture) }}" alt="user" width="40px" height="40px" class="rounded-circle">    
+                                    <img src="{{ asset('assets/profile_picture/'.$review->user->profile->picture) }}" alt="user" width="40px" height="40px" class="rounded-circle">    
                                 @endif
                             </div>
                             <div class="col">

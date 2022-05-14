@@ -18,7 +18,15 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="#">Genre</a></li>
-                        <li><a class="dropdown-item" href="#">Country</a></li>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Country</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/country/japan" class="dropdown-item">Japan</a></li>
+                                <li><a href="/country/korea" class="dropdown-item">Korea</a></li>
+                                <li><a href="/country/china" class="dropdown-item">China</a></li>
+                                <li><a href="/country/indonesia" class="dropdown-item">Indonesia</a></li>
+                                <li><a href="/country/other" class="dropdown-item">Other</a></li>
+                            </ul>
+                        </li>
                         <li><a class="dropdown-item" href="#">Author</a></li>
                     </ul>
                 </div>

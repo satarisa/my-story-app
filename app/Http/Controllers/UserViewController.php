@@ -69,4 +69,10 @@ class UserViewController extends Controller
         Session::flash('edit', $review->save());
         return back()->with('status', 'Your review has been updated successfully!');
     }
+
+    public function country($country) {
+        $country_name = ucfirst($country);
+        $books = BookDetail::where('country', $country_name)->get();
+        return view('user.category.country', compact('country_name', 'books'));
+    }
 }

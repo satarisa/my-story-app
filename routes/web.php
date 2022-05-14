@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [UserViewController::class, 'index']);
+
 Route::get('/show-book/{id}', [UserViewController::class, 'show']);
 Route::post('/show-book', [UserViewController::class, 'store'])->name('book.review');
 Route::put('/show-book/{id}', [UserViewController::class, 'update'])->name('review.update');
@@ -39,6 +40,10 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::middleware('countryisexists')->group(function(){
+    Route::get('/country/{country}', [UserViewController::class, 'country']);
+});
 
 Route::middleware('auth')->group(function() {
     Route::middleware('admin')->group(function() {
