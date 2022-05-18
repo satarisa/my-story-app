@@ -45,6 +45,10 @@ Route::middleware('countryisexists')->group(function(){
     Route::get('/country/{country}', [UserViewController::class, 'country']);
 });
 
+Route::middleware('genreisexists')->group(function(){
+    Route::get('genre/{genre}', [UserViewController::class, 'genre']);
+});
+
 Route::middleware('auth')->group(function() {
     Route::middleware('admin')->group(function() {
         Route::get('/menuadmin', [AdminViewController::class, 'index']);

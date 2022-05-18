@@ -17,7 +17,15 @@
                         Category
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Genre</a></li>
+                        <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Genre</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/genre/fantasy" class="dropdown-item">Fantasy</a></li>
+                                <li><a href="/genre/comedy" class="dropdown-item">Comedy</a></li>
+                                <li><a href="/genre/romance" class="dropdown-item">Romance</a></li>
+                                <li><a href="/genre/action" class="dropdown-item">Action</a></li>
+                                <li><a href="/genre/horror" class="dropdown-item">Horror</a></li>
+                            </ul>
+                        </li>
                         <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Country</a>
                             <ul class="dropdown-menu">
                                 <li><a href="/country/japan" class="dropdown-item">Japan</a></li>
