@@ -72,7 +72,7 @@ class UserViewController extends Controller
 
     public function country($country) {
         $country_name = ucfirst($country);
-        $books = BookDetail::where('country', $country_name)->get();
+        $books = BookDetail::where('country', $country_name)->paginate(10);
         return view('user.category.country', compact('country_name', 'books'));
     }
 }
