@@ -92,7 +92,7 @@
 <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
     <div class="col-md-4 d-flex align-items-center">
       <img src="{{ asset('/img/msa-logo.png') }}" alt="footer-logo" height="30" style="opacity: 75%">
-      <span class="text-muted">&copy; 2021</span>
+      <span class="text-muted">&copy; 2022</span>
     </div>
 
     <div>

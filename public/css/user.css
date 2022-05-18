@@ -34,3 +34,21 @@ div.stars {
 .btn-user-1:hover {
   background-color: #9ca0c7;
 }
+
+/* Navbar */
+.navbar-nav li:hover > ul.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu {
+  position:relative;
+}
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top:-6px;
+}
+
+.dropdown-menu > li > a:hover:after {
+  text-decoration: underline;
+  transform: rotate(-90deg);
+} 
