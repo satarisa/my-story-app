@@ -35,7 +35,6 @@
                                 <li><a href="/country/other" class="dropdown-item">Other</a></li>
                             </ul>
                         </li>
-                        <li><a class="dropdown-item" href="#">Author</a></li>
                     </ul>
                 </div>
                 <a class="nav-link" href="#">About</a>

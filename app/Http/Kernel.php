@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\AdminOnlyMiddleware;
 use App\Http\Middleware\CountryIsExistsMiddleware;
 use App\Http\Middleware\GenreIsExistsMiddleware;
+use App\Http\Middleware\TypeIsExistsMiddleware;
 use App\Http\Middleware\UserLoginMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -72,5 +73,6 @@ class Kernel extends HttpKernel
         'userlogin' => UserLoginMiddleware::class,
         'countryisexists' => CountryIsExistsMiddleware::class,
         'genreisexists' => GenreIsExistsMiddleware::class,
+        'typeisexists' => TypeIsExistsMiddleware::class,
     ];
 }

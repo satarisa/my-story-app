@@ -9,6 +9,9 @@
         <div class="col-lg-9">
             <div class="card shadow">
                 <div class="card-body">
+                    @if (!empty($webcomics))
+                        <a href="/type/webcomic" class="float-end mt-3"><em>More Webcomics</em></a>
+                    @endif
                     <p class="display-6">Webcomic For You</p>
                     
                     <div class="row">
@@ -35,6 +38,9 @@
 
             <div class="card shadow mt-4">
                 <div class="card-body">
+                    @if (!empty($novels))
+                        <a href="/type/novel" class="float-end mt-3"><em>More Novels</em></a>
+                    @endif
                     <p class="display-6">Novel For You</p>
                     <div class="row">
                         @foreach ($novels as $novel)
@@ -60,12 +66,17 @@
         <div class="col-lg-3">
             <div class="card">
                 <div class="card-body">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search here">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                            <i class="bi bi-search-heart-fill"></i>
-                        </button>
-                    </div>
+
+                    <form action="/search" method="POST">
+                        @csrf
+                        <div class="input-group mb-3">
+                            <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Search title or author here">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                                <i class="bi bi-search-heart-fill"></i>
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>

@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserViewController::class, 'index']);
 
+Route::post('/search', [UserViewController::class, 'search']);
+
 Route::get('/show-book/{id}', [UserViewController::class, 'show']);
 Route::post('/show-book', [UserViewController::class, 'store'])->name('book.review');
 Route::put('/show-book/{id}', [UserViewController::class, 'update'])->name('review.update');
@@ -40,6 +42,10 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
+
+Route::middleware('typeisexists')->group(function(){
+    Route::get('/type/{type}', [UserViewController::class, 'type']);
+});
 
 Route::middleware('countryisexists')->group(function(){
     Route::get('/country/{country}', [UserViewController::class, 'country']);
