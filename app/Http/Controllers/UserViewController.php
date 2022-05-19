@@ -81,4 +81,10 @@ class UserViewController extends Controller
         $books = BookDetail::where('genre', $genre_name)->paginate(10);
         return view('user.category.genre', compact('genre_name', 'books'));
     }
+
+    public function type($type) {
+        $type_name = ucfirst($type);        
+        $books = BookDetail::where('type', $type_name)->join('books', 'books.id', '=', 'book_details.book_id')->orderBy('books.title')->paginate(10);
+        return view('user.category.type', compact('type_name', 'books'));
+    }
 }

@@ -41,6 +41,10 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
+Route::middleware('typeisexists')->group(function(){
+    Route::get('/type/{type}', [UserViewController::class, 'type']);
+});
+
 Route::middleware('countryisexists')->group(function(){
     Route::get('/country/{country}', [UserViewController::class, 'country']);
 });

@@ -9,6 +9,9 @@
         <div class="col-lg-9">
             <div class="card shadow">
                 <div class="card-body">
+                    @if (!empty($webcomics))
+                        <a href="/type/webcomic" class="float-end mt-3"><em>More Webcomics</em></a>
+                    @endif
                     <p class="display-6">Webcomic For You</p>
                     
                     <div class="row">
@@ -35,6 +38,9 @@
 
             <div class="card shadow mt-4">
                 <div class="card-body">
+                    @if (!empty($novels))
+                        <a href="/type/novel" class="float-end mt-3"><em>More Novels</em></a>
+                    @endif
                     <p class="display-6">Novel For You</p>
                     <div class="row">
                         @foreach ($novels as $novel)
