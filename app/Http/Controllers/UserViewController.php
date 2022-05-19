@@ -17,6 +17,17 @@ class UserViewController extends Controller
         return view('index', compact('novels', 'webcomics'));
     }
 
+    public function search(Request $request) {
+        $keyword = $request->keyword;
+        $books = BookDetail::join('books', 'books.id', '=', 'book_details.book_id')
+                            ->where('books.title', 'like', '%'.$keyword.'%')
+                            ->orWhere('books.author', 'like', '%'.$keyword.'%')
+                            ->orderBy('books.title')
+                            ->paginate(10);
+                            
+        return view('user.category.search', compact('keyword', 'books'));
+    }
+
     public function show($id) {
         if (!empty(session('user'))) {
             $user_id = session('user')->id;

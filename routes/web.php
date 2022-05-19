@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserViewController::class, 'index']);
 
+Route::post('/search', [UserViewController::class, 'search']);
+
 Route::get('/show-book/{id}', [UserViewController::class, 'show']);
 Route::post('/show-book', [UserViewController::class, 'store'])->name('book.review');
 Route::put('/show-book/{id}', [UserViewController::class, 'update'])->name('review.update');

@@ -66,12 +66,17 @@
         <div class="col-lg-3">
             <div class="card">
                 <div class="card-body">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search here">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                            <i class="bi bi-search-heart-fill"></i>
-                        </button>
-                    </div>
+
+                    <form action="/search" method="POST">
+                        @csrf
+                        <div class="input-group mb-3">
+                            <input type="text" id="keyword" name="keyword" class="form-control" placeholder="Search title or author here">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                                <i class="bi bi-search-heart-fill"></i>
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
