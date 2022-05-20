@@ -14,7 +14,8 @@ class UserViewController extends Controller
         // $book = BookDetail::all();
         $novels = Book::whereRelation('book_detail', 'type', 'Novel')->withCount('review')->orderBy('review_count', 'desc')->take(5)->get();
         $webcomics = Book::whereRelation('book_detail', 'type', 'Webcomic')->withCount('review')->orderBy('review_count', 'desc')->take(5)->get();
-        return view('index', compact('novels', 'webcomics'));
+        $recents = Review::latest()->take(10)->get();
+        return view('index', compact('novels', 'webcomics', 'recents'));
     }
 
     public function search(Request $request) {

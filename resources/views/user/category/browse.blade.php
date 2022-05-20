@@ -4,6 +4,7 @@
 @section('title', 'MSA | Browse All Stories')
 
 @section('content')
+
 <div class="container">
     <h1 class="display-4 mt-3 mb-3">All Stories</h1>
     <hr>
@@ -23,7 +24,4 @@
     @endforeach
 </div>
 
-{{-- @foreach ($books as $book)
-    <p>{{ $book->title }}</p>
-@endforeach --}}
 @endsection

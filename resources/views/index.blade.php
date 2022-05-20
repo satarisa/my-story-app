@@ -66,7 +66,7 @@
         <div class="col-lg-3">
             <div class="card">
                 <div class="card-body">
-                    <p class="card-title">Search here</p>
+                    <h5 class="card-title">Search here</h5>
 
                     <form action="/search" method="POST">
                         @csrf
@@ -80,7 +80,19 @@
 
                     <hr>
 
-                    <p class="card-title">Recent reviews</p>
+                    <h5 class="card-title">Recent reviews</h5>
+                    @if (!empty($recents))
+                        <ul class="list-group">
+                            @foreach ($recents as $recent)
+                                <li class="list-group-item">
+                                    <strong>{{ $recent->user->name }}</strong> in <a href="/show-book/{{ $recent->book->id }}">{{ $recent->book->title }}</a>  :
+                                    <p class="ps-3">"<small>{{ $recent->comment }}</small>"</p>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @else
+                        <em>There's nothing reviews</em>
+                    @endif
 
                 </div>
             </div>
