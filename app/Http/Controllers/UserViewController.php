@@ -24,7 +24,7 @@ class UserViewController extends Controller
                             ->orWhere('books.author', 'like', '%'.$keyword.'%')
                             ->orderBy('books.title')
                             ->paginate(10);
-                            
+
         return view('user.category.search', compact('keyword', 'books'));
     }
 
@@ -79,6 +79,11 @@ class UserViewController extends Controller
 
         Session::flash('edit', $review->save());
         return back()->with('status', 'Your review has been updated successfully!');
+    }
+
+    public function browse() {
+        $books = Book::orderBy('title')->get();
+        return view('user.category.browse', compact('books'));
     }
 
     public function country($country) {

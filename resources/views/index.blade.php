@@ -66,6 +66,7 @@
         <div class="col-lg-3">
             <div class="card">
                 <div class="card-body">
+                    <p class="card-title">Search here</p>
 
                     <form action="/search" method="POST">
                         @csrf
@@ -76,6 +77,10 @@
                             </button>
                         </div>
                     </form>
+
+                    <hr>
+
+                    <p class="card-title">Recent reviews</p>
 
                 </div>
             </div>
