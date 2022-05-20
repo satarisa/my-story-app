@@ -35,6 +35,10 @@ div.stars {
   background-color: #9ca0c7;
 }
 
+.bg-one {
+  background-color: #E3E5FD;
+}
+
 /* Navbar */
 .navbar-nav li:hover > ul.dropdown-menu {
   display: block;

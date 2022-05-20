@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Login;
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,8 @@ class RegisterController extends Controller
 
         $user_login = Login::where(["user_name" => $user->user_name])->first();
         Session::put('user', $user_login);
+        $profile = Profile::where(["user_id" => $user->id])->first();
+        Session::put('profile', $profile);
         return redirect('/');
     }
 }
