@@ -86,7 +86,7 @@
                             @foreach ($recents as $recent)
                                 <li class="list-group-item">
                                     <strong>{{ $recent->user->name }}</strong> in <a href="/show-book/{{ $recent->book->id }}">{{ $recent->book->title }}</a>  :
-                                    <p class="ps-3">"<small>{{ $recent->comment }}</small>"</p>
+                                    <p class="ps-3">"<small>{{ substr($recent->comment, 0, 75).(strlen($recent->comment) > 75 ? '...' : '') }}</small>"</p>
                                 </li>
                             @endforeach
                         </ul>
