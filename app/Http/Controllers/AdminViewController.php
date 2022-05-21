@@ -7,6 +7,8 @@ use App\Models\Book;
 use App\Models\BookDetail;
 use App\Models\Review;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class AdminViewController extends Controller
 {
@@ -15,6 +17,9 @@ class AdminViewController extends Controller
         $total_user = User::count();
         $total_review = Review::count();
         $latest = BookDetail::latest()->first();
-        return view('admin.menu', compact('total_book', 'total_user', 'total_review', 'latest'));
+        $created_date = Session::get('user')->created_at;
+        $joined_days = $created_date->diffInDays();
+
+        return view('admin.menu', compact('total_book', 'total_user', 'total_review', 'joined_days', 'latest'));
     }
 }

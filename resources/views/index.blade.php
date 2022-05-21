@@ -10,7 +10,7 @@
             <div class="card shadow">
                 <div class="card-body">
                     @if (!empty($webcomics))
-                        <a href="/type/webcomic" class="float-end mt-3"><em>More Webcomics</em></a>
+                        <a href="/type/webcomic" class="float-end mt-3 badge bg-dark"><em>More Webcomics</em></a>
                     @endif
                     <p class="display-6">Webcomic For You</p>
                     
@@ -39,7 +39,7 @@
             <div class="card shadow mt-4">
                 <div class="card-body">
                     @if (!empty($novels))
-                        <a href="/type/novel" class="float-end mt-3"><em>More Novels</em></a>
+                        <a href="/type/novel" class="float-end mt-3 badge bg-dark"><em>More Novels</em></a>
                     @endif
                     <p class="display-6">Novel For You</p>
                     <div class="row">
@@ -86,7 +86,7 @@
                             @foreach ($recents as $recent)
                                 <li class="list-group-item">
                                     <strong>{{ $recent->user->name }}</strong> in <a href="/show-book/{{ $recent->book->id }}">{{ $recent->book->title }}</a>  :
-                                    <p class="ps-3">"<small>{{ $recent->comment }}</small>"</p>
+                                    <p class="ps-3">"<small>{{ substr($recent->comment, 0, 75).(strlen($recent->comment) > 75 ? '...' : '') }}</small>"</p>
                                 </li>
                             @endforeach
                         </ul>
