@@ -42,11 +42,11 @@
 
         <div class="col-lg-3">
             <div class="card text-white bg-four mb-3">
-                <div class="card-header">???</div>
+                <div class="card-header">You've been joined</div>
                 <div class="card-body">
                     <i class='bx bxs-book bx-tada-hover bx-pull-left bx-lg'></i>
-                    <h5 class="card-title">107</h5>
-                    <p class="card-text">stories stored</p>
+                    <h5 class="card-title">{{ $joined_days }}</h5>
+                    <p class="card-text">days</p>
                 </div>
             </div>
         </div>

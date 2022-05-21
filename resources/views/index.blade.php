@@ -10,7 +10,7 @@
             <div class="card shadow">
                 <div class="card-body">
                     @if (!empty($webcomics))
-                        <a href="/type/webcomic" class="float-end mt-3"><em>More Webcomics</em></a>
+                        <a href="/type/webcomic" class="float-end mt-3 badge bg-dark"><em>More Webcomics</em></a>
                     @endif
                     <p class="display-6">Webcomic For You</p>
                     
@@ -39,7 +39,7 @@
             <div class="card shadow mt-4">
                 <div class="card-body">
                     @if (!empty($novels))
-                        <a href="/type/novel" class="float-end mt-3"><em>More Novels</em></a>
+                        <a href="/type/novel" class="float-end mt-3 badge bg-dark"><em>More Novels</em></a>
                     @endif
                     <p class="display-6">Novel For You</p>
                     <div class="row">
