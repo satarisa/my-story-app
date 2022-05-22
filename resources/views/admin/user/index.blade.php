@@ -41,11 +41,10 @@
                                     <td>{{ $admin->name }}</td>
                                     <td>{{ $admin->user_name }}</td>
                                     <td>
-                                        <a href="/user/{{ $admin->id}}" class="btn btn-warning btn-sm"><i class="bi bi-info-lg"></i></a>
                                         <form action="{{ route('user.destroy',['user'=>$admin->id]) }}" method="POST" class="d-inline sa-form">
                                             @method('delete')
                                             @csrf
-                                            <button type="submit" onclick="return false" class="btn btn-danger btn-sm sa-confirm"><i class="bi bi-trash"></i></button>
+                                            <button type="submit" onclick="return false" class="btn btn-outline-danger btn-sm sa-confirm"><i class="bi bi-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -80,11 +79,10 @@
                                     <td>{{ $guest->name }}</td>
                                     <td>{{ $guest->user_name }}</td>
                                     <td>
-                                        <a href="/user/{{ $guest->id}}" class="btn btn-warning btn-sm"><i class="bi bi-info-lg"></i></a>
-                                        <form action="{{ route('user.destroy',['user'=>$guest->id]) }}" method="POST" class="d-inline sa-form">
+                                        <form action="{{ route('user.destroy',['user'=>$guest->id]) }}" method="POST" class="d-inline">
                                             @method('delete')
                                             @csrf
-                                            <button type="submit" onclick="return false" class="btn btn-danger btn-sm sa-confirm"><i class="bi bi-trash"></i></button>
+                                            <button type="submit" onclick="return false" class="btn btn-outline-danger btn-sm sa-confirm"><i class="bi bi-trash"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -102,7 +100,7 @@
 <script type="text/javascript">
     $('.sa-confirm').on('click', function (e) {
         e.preventDefault();
-        let id = $(this).data('id');
+        var form = $(this).closest("form");
         Swal.fire({
             title: 'Are you sure?',
             text: "This action can't be undo!",
@@ -113,7 +111,7 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                $('.sa-form').submit();
+                form.submit();
             }
         });
     });

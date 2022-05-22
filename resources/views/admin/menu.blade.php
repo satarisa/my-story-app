@@ -44,7 +44,7 @@
             <div class="card text-white bg-four mb-3">
                 <div class="card-header">You've been joined</div>
                 <div class="card-body">
-                    <i class='bx bxs-book bx-tada-hover bx-pull-left bx-lg'></i>
+                    <i class='bx bxs-calendar bx-tada-hover bx-pull-left bx-lg'></i>
                     <h5 class="card-title">{{ $joined_days }}</h5>
                     <p class="card-text">days</p>
                 </div>
