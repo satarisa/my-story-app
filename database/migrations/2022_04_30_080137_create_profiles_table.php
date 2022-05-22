@@ -18,7 +18,7 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->string('picture')->nullable();
             $table->bigInteger('user_id', 0, 1);
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->enum('gender', ['Female', 'Male'])->nullable();
             $table->date('birthday')->nullable();
         });
