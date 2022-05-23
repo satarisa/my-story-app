@@ -5,7 +5,7 @@
 
 @section('content')
 
-<a href="book/create" class="btn btn-primary float-end mt-4">Add New Story</a>
+<a href="book/create" class="btn btn-one float-end mt-4">Add New Story</a>
 <h1 class="pt-4">All Books</h1>
 
 <div class="card">

@@ -54,7 +54,7 @@ class BookController extends Controller
         $book->title = $request->title;
         $cover = $request->file('cover');
         if(!empty($cover)){
-            $cover_name = date('Y-m-d')."_".$request->title;
+            $cover_name = date('Y-m-d')."_".$request->title.'_'.$cover->getClientOriginalName();
             $cover->move("assets/cover",$cover_name);
             $book->cover = $cover_name;
         }
@@ -128,7 +128,7 @@ class BookController extends Controller
         if ($request->cover != null) {
             $cover = $request->file('cover');
             if(!empty($cover)){
-                $cover_name = date('Y-m-d')."_".$request->title;
+                $cover_name = date('Y-m-d')."_".$request->title.'_'.$cover->getClientOriginalName();
                 $cover->move("assets/cover",$cover_name);
                 $book->cover = $cover_name;
             }
