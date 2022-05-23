@@ -37,7 +37,7 @@
                         </li>
                     </ul>
                 </div>
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="/about">About</a>
             </div>
             <div class="d-flex ms-auto">
                 @if (!empty(session('user')))

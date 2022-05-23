@@ -32,6 +32,7 @@ Route::get('/', [UserViewController::class, 'index']);
 
 Route::post('/search', [UserViewController::class, 'search']);
 Route::get('/browse', [UserViewController::class, 'browse']);
+Route::get('/about', [UserViewController::class, 'about']);
 
 Route::get('/show-book/{id}', [UserViewController::class, 'show']);
 Route::post('/show-book', [UserViewController::class, 'store'])->name('book.review');
