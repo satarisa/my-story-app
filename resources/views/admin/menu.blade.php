@@ -12,7 +12,7 @@
                 <div class="card-header">Books</div>
                 <div class="card-body">
                     <i class='bx bxs-book bx-tada-hover bx-pull-left bx-lg'></i>
-                    <h5 class="card-title">{{ $total_book }}</h5>
+                    <h5 class="card-title">{{ $dashboard_values['total_book'] }}</h5>
                     <p class="card-text">stories stored</p>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <div class="card-header">Users</div>
                 <div class="card-body">
                     <i class='bx bxs-group bx-tada-hover bx-pull-left bx-lg'></i>
-                    <h5 class="card-title">{{ $total_user }}</h5>
+                    <h5 class="card-title">{{ $dashboard_values['total_user'] }}</h5>
                     <p class="card-text">users joined</p>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                 <div class="card-header">Reviews</div>
                 <div class="card-body">
                     <i class='bx bxs-message-dots bx-tada-hover bx-pull-left bx-lg'></i>
-                    <h5 class="card-title">{{ $total_review }}</h5>
+                    <h5 class="card-title">{{ $dashboard_values['total_review'] }}</h5>
                     <p class="card-text">reviews given</p>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="card-header">You've been joined</div>
                 <div class="card-body">
                     <i class='bx bxs-calendar bx-tada-hover bx-pull-left bx-lg'></i>
-                    <h5 class="card-title">{{ $joined_days }}</h5>
+                    <h5 class="card-title">{{ $dashboard_values['joined_days'] }}</h5>
                     <p class="card-text">days</p>
                 </div>
             </div>

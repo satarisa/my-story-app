@@ -16,10 +16,17 @@ class AdminViewController extends Controller
         $total_book = Book::count();
         $total_user = User::count();
         $total_review = Review::count();
-        $latest = BookDetail::latest()->first();
         $created_date = Session::get('user')->created_at;
         $joined_days = $created_date->diffInDays();
+        $dashboard_values = [
+            'total_book' => $total_book,
+            'total_user' => $total_user,
+            'total_review' => $total_review,
+            'joined_days' => $joined_days
+        ];
 
-        return view('admin.menu', compact('total_book', 'total_user', 'total_review', 'joined_days', 'latest'));
+        $latest = BookDetail::latest()->first();
+
+        return view('admin.menu', compact('dashboard_values', 'latest'));
     }
 }
