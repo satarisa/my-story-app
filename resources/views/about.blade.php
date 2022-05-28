@@ -34,6 +34,10 @@
         </div>
         <center class="py-3"><hr width="25%"></center>
         <h3 class="display-5 mb-5">Discover More</h3>
-        <a href="/register" class="btn btn-lg btn-user-1 px-5 mb-5">Join Now</a>
+        @if (!empty(session('user')))
+            <a href="/" class="btn btn-lg btn-user-1 px-5 mb-5">Explore Now</a>
+        @else
+            <a href="/register" class="btn btn-lg btn-user-1 px-5 mb-5">Join Now</a>
+        @endif
     </div>
 @endsection
