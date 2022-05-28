@@ -24,7 +24,7 @@
                     <div class="row mb-3">
                         <label for="cover" class="col-sm-3 col-form-label">Cover</label>
                         <div class="col-sm-9">
-                            <input type="file" accept="img/png, image/jpeg" class="form-control @error('cover') is-invalid @enderror" id="cover" name="cover" value="{{ $book_detail->book->cover }}">
+                            <input type="file" class="form-control @error('cover') is-invalid @enderror" id="cover" name="cover" value="{{ $book_detail->book->cover }}">
                             @error('cover')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             <small class="text-warning fw-bold">Leave this field blank if there is no change!</small>
                         </div>
