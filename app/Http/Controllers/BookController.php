@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookRequest;
+use App\Http\Requests\UpdateBookRequest;
 use App\Models\Book;
 use App\Models\BookDetail;
 use App\Models\Review;
@@ -37,19 +39,8 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBookRequest $request)
     {
-        $request->validate([
-            'title' => ['required'],
-            'cover' => ['required', 'image'],
-            'author' => ['required'],
-            'type' => ['required'],
-            'link' => ['url', 'nullable']
-        ], [
-            'required' => "This field can't be empty!",
-            'url' => "URL not valid!",
-        ]);
-
         $book = new Book;
         $book->title = $request->title;
         $cover = $request->file('cover');
@@ -107,20 +98,8 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBookRequest $request, $id)
     {
-        $request->validate([
-            'title' => ['required'],
-            'cover' => ['image'],
-            'author' => ['required'],
-            'type' => ['required'],
-            'link' => ['url', 'nullable']
-        ], [
-            'required' => "This field can't be empty!",
-            'url' => "URL not valid!",
-            'image' => "File type must be an image! (jpg, jpeg, png, bmp, gif, svg, or webp)"
-        ]);
-
         $book = Book::find($id);
         $book_detail = BookDetail::find($book->id);
 

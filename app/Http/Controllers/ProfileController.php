@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -72,23 +73,8 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProfileRequest $request, $id)
     {
-        $request->validate([
-            'user_name' => ['required', 'unique:users,user_name,'.$id], //table,column,except,id
-            'name'      => ['required'],
-            'email'     => ['required', 'email:rfc,dns'],
-            'password'  => ['nullable', 'min:6', 'confirmed'],
-            'picture'   => ['image']
-        ],[ 
-            'required'  => "This field can't be empty!",
-            'user_name.unique'  => "Username already exist!",
-            'email'     => "Email address not valid!",
-            'confirmed' => "Password didn't match!",
-            'min'      => "Password must be at least 6 characters!",
-            'image' => "File type must be an image!"
-        ]);
-
         $user = User::find($id);
         $user->user_name = $request->user_name;
         $user->name = $request->name;
