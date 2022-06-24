@@ -21,14 +21,14 @@ class RegisterController extends Controller
             'user_name' => ['required', 'unique:users,user_name'],
             'name'      => ['required'],
             'email'     => ['required', 'email:rfc,dns'],
-            'password'  => ['required', 'size:6', 'confirmed'],
+            'password'  => ['required', 'min:6', 'confirmed'],
             'password_confirmation' => ['required']
         ],[ 
             'required'  => "This field can't be empty!",
             'user_name.unique'  => "Username already exist!",
             'email'     => "Email address not valid!",
             'confirmed' => "Password didn't match!",
-            'size'      => "Password must be at least 6 characters!"
+            'min'      => "Password must be at least 6 characters!"
         ]);
 
         $user = new User;
