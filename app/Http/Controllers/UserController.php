@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -37,22 +38,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $request->validate([
-            'user_name' => ['required', 'unique:users,user_name'],
-            'name'      => ['required'],
-            'email'     => ['required', 'email:rfc,dns'],
-            'password'  => ['required', 'min:6', 'confirmed'],
-            'password_confirmation' => ['required']
-        ],[ 
-            'required'  => "This field can't be empty!",
-            'user_name.unique'  => "Username already exist!",
-            'email'     => "Email address not valid!",
-            'confirmed' => "Password didn't match!",
-            'min'      => "Password must be at least 6 characters!"
-        ]);
-
         $user = new User;
         $user->user_name = $request->user_name;
         $user->name = $request->name;

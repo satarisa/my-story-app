@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreReviewRequest;
 use App\Models\Book;
 use App\Models\BookDetail;
 use App\Models\Review;
@@ -47,15 +48,8 @@ class UserViewController extends Controller
         }
         
     }
-
-    public function store(Request $request) {
-        $request->validate([
-            'star'      => ['required'],
-            'comment'   => ['required']
-        ], [
-            'required'  => "You can't leave this field blank!"
-        ]);
-        
+ 
+    public function store(StoreReviewRequest $request) {        
         $review = new Review;
         $review->user_id = $request->user_id;
         $review->book_id = $request->book_id;

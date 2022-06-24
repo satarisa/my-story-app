@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\Models\Login;
 use App\Models\Profile;
 use App\Models\User;
@@ -16,21 +17,7 @@ class RegisterController extends Controller
         return view('register');
     }
 
-    public function register(Request $request) {
-        $request->validate([
-            'user_name' => ['required', 'unique:users,user_name'],
-            'name'      => ['required'],
-            'email'     => ['required', 'email:rfc,dns'],
-            'password'  => ['required', 'min:6', 'confirmed'],
-            'password_confirmation' => ['required']
-        ],[ 
-            'required'  => "This field can't be empty!",
-            'user_name.unique'  => "Username already exist!",
-            'email'     => "Email address not valid!",
-            'confirmed' => "Password didn't match!",
-            'min'      => "Password must be at least 6 characters!"
-        ]);
-
+    public function register(RegisterRequest $request) {
         $user = new User;
         $user->user_name = $request->user_name;
         $user->name = $request->name;
